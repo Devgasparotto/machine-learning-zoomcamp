@@ -5,9 +5,12 @@ import requests
 
 csv_dataset_url_path = "https://raw.githubusercontent.com/DataTalksClub/machine-learning-zoomcamp/main/cohorts/2026/data/car_fuel_efficiency_2026.csv"
 csv_destination = "car_fuel_efficiency_2026.csv"
+
 origin_column_name = "origin"
 origin = "Asia"
 horsepower_column_name = "horsepower"
+vehicle_weight_column_name = "vehicle_weight"
+model_year_column_name = "model_year"
 
 def download_dataset(url: str, filename: str):
     current_directory = os.getcwd()
@@ -73,8 +76,6 @@ def question_6(dataset: pd.DataFrame) -> str:
         return "No"
 
 def question_7(dataset: pd.DataFrame) -> float:
-    vehicle_weight_column_name = "vehicle_weight"
-    model_year_column_name = "model_year"
     x = dataset.query("origin == 'Asia'")[[vehicle_weight_column_name, model_year_column_name]][0:7].to_numpy()
 
     x_transpose = x.T
